@@ -1,0 +1,74 @@
+<div class="container mt-1">
+    <ul class="nav nav-tabs ">
+        <li class="nav-item">
+            <a class="nav-link active" href="/">Usuarios</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/personajes">Personajes</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/versiones">Versiones</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/partes">Partes</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/accesorios">Accesorios</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/emociones">Emociones</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/colores">Colores</a>
+        </li>
+    </ul>
+
+    <div class="row mt-4">
+        <div class="col-md-7">
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>N°</th>
+                        <th>Nombre</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                  {{#each usuarios}}
+                        <tr>
+                            <td>{{_id}}</td>
+                            <td>{{device}}</td>
+                            <td>
+                                <form action="/usuario/delete/{{_id}}?_method=DELETE" method="post">
+                                    <input type="hidden" name="_method" value="DELETE">
+                                    <button type="submit" class="btn btn-danger">
+                                        Delete
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+
+        </div>
+        <div class="col-md-5">
+            <div class="card">
+                <div class="card-body">
+                    <h1>Usuarios</h1>
+
+                    <form action="/usuario/add" method="post">
+                        <div class="form-group mt-2">
+                            <input type="text" name="nombre" placeholder="Nombre" class="form-control">
+                        </div>
+                        <button type="submit" class="btn btn-primary mt-2">Save Usuario</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+           
+</div>
+
+
+

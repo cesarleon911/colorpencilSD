@@ -1,0 +1,89 @@
+<div class="container mt-1">
+    <ul class="nav nav-tabs ">
+        <li class="nav-item">
+            <a class="nav-link" href="/">Usuarios</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/personajes">Personajes</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/versiones">Versiones</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/partes">Partes</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/accesorios">Accesorios</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" href="/emociones">Emociones</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/colores">Colores</a>
+        </li>
+    </ul>
+
+    <div class="row mt-4">
+        <div class="col-md-7">
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Version</th>
+                        <th>Personaje</th>
+                        <th>Acciones</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each emociones}}
+                        <tr>
+                            <td>{{emot_id}}</td>
+                            <td>{{emot_name}}</td>
+                            <td>{{graphic_line_id}}</td>
+                            <td>{{character_id}}</td>
+                            <td>
+                                <form action="/emociones/delete/{{_id}}?_method=DELETE" method="post">
+                                    <input type="hidden" name="_method" value="DELETE">
+                                    <button type="submit" class="btn btn-danger">
+                                        Delete
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+
+        </div>
+        <div class="col-md-5">
+            <div class="card">
+                <div class="card-body">
+                    <h1>Emociones</h1>
+                    <form action="/emociones/add" method="post">
+                        <div class="form-group mt-2">
+                            <input type="number" name="emoid" placeholder="ID" class="form-control" min="1" pattern="^[0-9]+">
+                        </div>
+                        <div class="form-group mt-2">
+                            <input type="text" name="nombre" placeholder="Nombre" class="form-control">
+                        </div>
+                        <div class="form-group mt-2">
+                            <textarea class="form-control" name="imagen" placeholder="Texto del SVG"></textarea>
+                        </div>
+                        <div class="form-group mt-2">
+                            <input type="number" name="personaid" placeholder="Personaje" class="form-control" min="1" pattern="^[0-9]+">
+                        </div>
+                        <div class="form-group mt-2">
+                            <input type="number" name="versionid" placeholder="Version" class="form-control" min="1" pattern="^[0-9]+">
+                        </div>
+                        <button type="submit" class="btn btn-primary mt-2">Save Emocion</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

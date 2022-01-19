@@ -1,0 +1,81 @@
+<div class="container mt-1">
+    <ul class="nav nav-tabs ">
+        <li class="nav-item">
+            <a class="nav-link" href="/">Usuarios</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" href="/personajes">Personajes</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/versiones">Versiones</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/partes">Partes</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/accesorios">Accesorios</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/emociones">Emociones</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/colores">Colores</a>
+        </li>
+    </ul>
+
+    <div class="row mt-4">
+        <div class="col-md-7">
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>URL Ref</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                   {{#each personajes}}
+                        <tr>
+                            <td>{{character_id}}</td>
+                            <td>{{character_name}}</td>
+                            <td>{{url_ref}}</td>
+                            <td>
+                                <form action="/personajes/delete/{{_id}}?_method=DELETE" method="post">
+                                    <input type="hidden" name="_method" value="DELETE">
+                                    <button type="submit" class="btn btn-danger">
+                                        Delete
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+
+        </div>
+        <div class="col-md-5">
+            <div class="card">
+                <div class="card-body">
+                    <h1>Personajes</h1>
+                    <form action="/personajes/add" method="post">
+                        <div class="form-group mt-2">
+                            <input type="number" name="id" placeholder="ID" class="form-control"  min="1" pattern="^[0-9]+">
+                        </div>
+                        <div class="form-group mt-2">
+                            <input type="text" name="nombre" placeholder="Nombre" class="form-control">
+                        </div>
+                        <div class="form-group mt-2">
+                            <input type="url" name="url_ref" placeholder="URL de imagen" class="form-control">
+                        </div>
+                        <button type="submit" class="btn btn-primary mt-2">Save Personaje</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+           
+</div>
+
+
+
